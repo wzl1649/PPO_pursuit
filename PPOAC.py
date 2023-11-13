@@ -104,13 +104,13 @@ def train(env, epochs, steps_per_epoch, batch_size, lr,gamma, clip_ratio):
                 if done:
                     break
             ppo.update((obs_buf,act_buf,rew_buf,logp_buf,np.zeros_like(rew_buf)))
-        print("Epoch: {}, Avg Reward: {:.2f}".format(epoch,np.mean(ep_reward)))
+        print("Epoch: {}, Avg Reward: {:.2f}".format(epoch+1,np.mean(ep_reward)))
 
-if __name__ == '__main__':
-    n_evaders =2
-    n_pursuers = 1
-    n_catch =1
-    max_cycles = 200
-    env = pursuit_v4.env(n_evaders = n_evaders, n_pursuers = n_pursuers,max_cycles =max_cycles,n_catch=n_catch)
-    env.reset(seed=42)
-    train(env,epochs=20,steps_per_epoch=max_cycles//5,batch_size=128,lr=0.02,gamma=0.99,clip_ratio=0.2)
+#if __name__ == '__main__':
+   # n_evaders =2
+    #n_pursuers = 1
+   # n_catch =1
+   # max_cycles = 200
+   # env = pursuit_v4.env(n_evaders = n_evaders, n_pursuers = n_pursuers,max_cycles =max_cycles,n_catch=n_catch)
+   # env.reset(seed=42)
+  #  train(env,epochs=20,steps_per_epoch=max_cycles//5,batch_size=128,lr=0.02,gamma=0.99,clip_ratio=0.2)
